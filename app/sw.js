@@ -1,31 +1,19 @@
 /* Service worker: lets the Sahel app open instantly and work offline */
-const CACHE = 'sahel-app-v1';
+const CACHE = 'sahel-app-v3';
 const CORE = [
   "home.html",
   "booking.html",
   "games.html",
   "profile.html",
   "manifest.webmanifest",
-  "../assets/css/base.css",
-  "../assets/js/dc-lite.js",
+  "../assets/css/base.css?v=3",
+  "../assets/js/dc-lite.js?v=3",
+  "../assets/js/img-manifest.js?v=3",
+  "../assets/js/app-install.js?v=3",
   "../assets/js/morphdom.min.js",
   "../assets/fonts/vazirmatn-var.woff2",
   "../assets/icons/icon-192.png",
-  "../assets/icons/icon-512.png",
-  "../assets/img/fac-beach.webp",
-  "../assets/img/fac-cafe.webp",
-  "../assets/img/fac-lockers.webp",
-  "../assets/img/fac-lounge.webp",
-  "../assets/img/fac-yoga.webp",
-  "../assets/img/sup-aerial-solo.webp",
-  "../assets/img/sup-board-closeup.webp",
-  "../assets/img/sup-group-aerial.webp",
-  "../assets/img/sup-kid-lesson.webp",
-  "../assets/img/sup-sunset-group.webp",
-  "../assets/img/ten-clay-aerial.webp",
-  "../assets/img/ten-coach.webp",
-  "../assets/img/ten-racket-blue.webp",
-  "../assets/img/woman-above.webp"
+  "../assets/icons/apple-touch-icon.png"
 ];
 
 self.addEventListener('install', (e) => {

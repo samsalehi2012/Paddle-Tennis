@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>باشگاه ساحل — تنیس و پدل‌بورد</title>
+<script>(function(){try{var site=/[?&]site=1/.test(location.search);if(site){sessionStorage.setItem('sahel-site','1');}var forced=site||sessionStorage.getItem('sahel-site')==='1';var ua=navigator.userAgent||'';var phone=/Android.+Mobile|iPhone|iPod|Windows Phone|IEMobile|Opera Mini/i.test(ua)||!!(navigator.userAgentData&&navigator.userAgentData.mobile);var small=Math.min(screen.width,screen.height)<=600;var coarse=!!(window.matchMedia&&matchMedia('(pointer:coarse)').matches);if(!forced&&(phone||(coarse&&small))){location.replace('app/home.html'+location.hash);}}catch(e){}})();</script>
 <meta name="description" content="باشگاه تنیس و پدل‌بورد ساحل — رزرو آنلاین زمین تنیس و سانس‌های پدل‌بورد.">
 <meta name="theme-color" content="#0B5D74">
 <meta property="og:title" content="باشگاه ساحل — تنیس و پدل‌بورد">
@@ -11,7 +12,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/vazirmatn-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/base.css?v=3">
 </head>
 <body>
 <template id="dc-template">
@@ -574,7 +575,8 @@ class Component extends DCLogic {
   }
 }
 </script>
+<script src="assets/js/img-manifest.js?v=3"></script>
 <script src="assets/js/morphdom.min.js"></script>
-<script src="assets/js/dc-lite.js"></script>
+<script src="assets/js/dc-lite.js?v=3"></script>
 </body>
 </html>

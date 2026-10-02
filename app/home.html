@@ -11,7 +11,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/icon-192.png">
 <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/vazirmatn-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/base.css?v=3">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -198,8 +198,10 @@ class Component extends DCLogic {
   }
 }
 </script>
+<script src="../assets/js/img-manifest.js?v=3"></script>
 <script src="../assets/js/morphdom.min.js"></script>
-<script src="../assets/js/dc-lite.js"></script>
+<script src="../assets/js/dc-lite.js?v=3"></script>
+<script src="../assets/js/app-install.js?v=3" defer></script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script>
 </body>
 </html>

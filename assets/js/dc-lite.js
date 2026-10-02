@@ -121,7 +121,87 @@
     var kids = [];
     renderChildren(n, scope, ctx, kids);
     for (var k = 0; k < kids.length; k++) el.appendChild(kids[k]);
-    out.push(el);
+    out.push(tag === 'img' ? responsive(el) : el);
+  }
+
+  /*
+   * Responsive photos: assets/img/<name>.webp gets a srcset sized for the slot it is shown in
+   * (density capped at 2x — sharper than the eye can tell on phones, far fewer bytes),
+   * and is lazy-loaded unless it sits above the fold.
+   */
+  var IMG_RE = /^(.*assets\/img\/)([a-z0-9-]+)\.webp$/;
+  function responsive(img) {
+    var M = window.__IMG;
+    var src = img.getAttribute('src') || '';
+    var m = src.match(IMG_RE);
+    if (!M || !m || !M.w[m[2]]) return img;
+    var prefix = m[1], name = m[2], widths = M.w[name];
+    var page = document.body && document.body.classList.contains('app-body') ? 'app' : 'main';
+    var dpr = window.devicePixelRatio || 1;
+    var f = dpr > 2 ? 2 / dpr : 1;
+    var px = function (v) { return Math.max(1, Math.round(v * f)) + 'px'; };
+    var main = M.s.main[name], app = M.s.app[name];
+    var sizes;
+    if (page === 'app') sizes = px(app || (main ? main[0] : M.s.fallback[name]));
+    else sizes = main ? '(max-width: 600px) ' + px(main[0]) + ', ' + px(main[1]) : px(M.s.fallback[name]);
+    var fallbackW = widths[0];
+    for (var i = 0; i < widths.length; i++) if (widths[i] <= 800) fallbackW = widths[i];
+    var eager = M.eager[page] && M.eager[page].indexOf(name) >= 0;
+    var fb = prefix + name + '-' + fallbackW + '.webp';
+    var set = widths.map(function (w) { return prefix + name + '-' + w + '.webp ' + w + 'w'; }).join(', ');
+    img.setAttribute('sizes', sizes);
+    img.setAttribute('decoding', 'async');
+    if (eager) {
+      img.setAttribute('src', fb);
+      img.setAttribute('srcset', set);
+      if (M.high[page] === name) img.setAttribute('fetchpriority', 'high');
+    } else {
+      img.setAttribute('src', BLANK);
+      img.setAttribute('data-src', fb);
+      img.setAttribute('data-srcset', set);
+    }
+    return img;
+  }
+
+  /* Lazy loading: photos load when they come within ~400px of view, inside whichever box scrolls them. */
+  var BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+  var observers = [];
+  function isScroller(el) {
+    var cs = getComputedStyle(el);
+    return (/(auto|scroll)/.test(cs.overflowY) && el.scrollHeight > el.clientHeight + 1) ||
+           (/(auto|scroll)/.test(cs.overflowX) && el.scrollWidth > el.clientWidth + 1);
+  }
+  function scrollRoot(el) {
+    for (var p = el.parentElement; p && p !== document.body && p !== document.documentElement; p = p.parentElement) {
+      if (isScroller(p)) return p;
+    }
+    return null;
+  }
+  function loadImg(img) {
+    if (img.getAttribute('data-lz')) return;
+    img.setAttribute('data-lz', 'loading');
+    var done = function () { img.setAttribute('data-lz', 'done'); };
+    img.addEventListener('load', done, { once: true });
+    img.addEventListener('error', done, { once: true });
+    img.setAttribute('srcset', img.getAttribute('data-srcset'));
+    img.setAttribute('src', img.getAttribute('data-src'));
+  }
+  function observerFor(root) {
+    for (var i = 0; i < observers.length; i++) if (observers[i].root === root) return observers[i].io;
+    var io = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { obs.unobserve(e.target); loadImg(e.target); }
+      });
+    }, { root: root, rootMargin: '400px' });
+    observers.push({ root: root, io: io });
+    return io;
+  }
+  function lazyScan(scope) {
+    var list = scope.querySelectorAll('img[data-src]:not([data-lz])');
+    for (var i = 0; i < list.length; i++) {
+      if (!('IntersectionObserver' in window)) loadImg(list[i]);
+      else observerFor(scrollRoot(list[i])).observe(list[i]);
+    }
   }
 
   function boot() {
@@ -156,11 +236,18 @@
       fresh.id = 'dc-root';
       for (var i = 0; i < out.length; i++) fresh.appendChild(out[i]);
       window.morphdom(mount, fresh, {
-        onBeforeElUpdated: function (fromEl) {
+        onBeforeElUpdated: function (fromEl, toEl) {
+          if (fromEl.tagName === 'IMG' && fromEl.getAttribute('data-lz') &&
+              toEl.getAttribute('data-src') === fromEl.getAttribute('data-src')) {
+            toEl.setAttribute('src', fromEl.getAttribute('src'));
+            toEl.setAttribute('srcset', fromEl.getAttribute('srcset'));
+            toEl.setAttribute('data-lz', fromEl.getAttribute('data-lz'));
+          }
           return !(fromEl === document.activeElement && (fromEl.tagName === 'INPUT' || fromEl.tagName === 'TEXTAREA'));
         }
       });
       ctx = next;
+      lazyScan(mount);
     };
 
     ['click', 'input', 'change'].forEach(function (type) {
