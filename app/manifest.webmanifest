@@ -1,0 +1,31 @@
+{
+  "name": "باشگاه ساحل — تنیس و پدل‌بورد",
+  "short_name": "ساحل",
+  "description": "باشگاه تنیس و پدل‌بورد ساحل — رزرو آنلاین زمین تنیس و سانس‌های پدل‌بورد.",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "home.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0B5D74",
+  "icons": [
+    {
+      "src": "../assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "../assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "../assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

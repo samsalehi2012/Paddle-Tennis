@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ساحل — خانه</title>
+<meta name="description" content="باشگاه تنیس و پدل‌بورد ساحل — رزرو آنلاین زمین تنیس و سانس‌های پدل‌بورد.">
+<meta name="theme-color" content="#0B5D74">
+<meta property="og:title" content="باشگاه ساحل — تنیس و پدل‌بورد">
+<meta property="og:description" content="باشگاه تنیس و پدل‌بورد ساحل — رزرو آنلاین زمین تنیس و سانس‌های پدل‌بورد.">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/icon-192.png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/vazirmatn-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ساحل">
+</head>
+<body class="app-body">
+<template id="dc-template">
+<helmet>
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#0B5D74}a:hover{color:#084A5D}
+.h-scroll{scrollbar-width:none}
+.h-scroll::-webkit-scrollbar{display:none}
+.h-press{transition:transform .12s ease}
+.h-press:active{transform:scale(.97)}
+:focus-visible{outline:3px solid #12A4A0;outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+</helmet>
+<div class="app-root" dir="rtl" style="position: relative; width: 390px; height: 844px; overflow: hidden; background: #FFFFFF; color: #0F1E26; font-family: 'Vazirmatn', system-ui, sans-serif">
+<div class="h-scroll" style="position: absolute; top: 0; right: 0; left: 0; bottom: 76px; overflow-y: auto">
+
+<div style="padding: 20px 20px 0; display: flex; align-items: center; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 13px; color: #66757E; font-weight: 600">عصر بخیر</span>
+<span style="font-size: 22px; font-weight: 900">امروز چی بازی کنیم؟</span>
+</div>
+<div style="display: flex; gap: 8px">
+<button type="button" aria-label="اعلان‌ها" style="position: relative; width: 46px; height: 46px; border-radius: 50%; border: 1px solid #E3E9EC; background: #FFFFFF; color: #0F1E26; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 16V10a6 6 0 0 1 12 0v6l2 2H4z"></path><path d="M10 21h4"></path></svg>
+<span style="position: absolute; top: 10px; left: 11px; width: 8px; height: 8px; border-radius: 50%; background: #E06A35"></span>
+</button>
+<a href="profile.html" aria-label="پروفایل" style="width: 46px; height: 46px; border-radius: 50%; background: {{brand}}; color: #FFFFFF; font-weight: 900; font-size: 16px; display: flex; align-items: center; justify-content: center; text-decoration: none">س</a>
+</div>
+</div>
+
+<a href="games.html" class="h-press" style="margin: 18px 20px 0; position: relative; display: block; height: 200px; border-radius: 28px; overflow: hidden; text-decoration: none; color: #FFFFFF; background: #E8F0E8">
+<img src="../assets/img/woman-above.webp" alt="بازیکن تنیس از نمای بالا روی زمین سبز" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%">
+<span aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,30,38,0.85) 0%, rgba(10,30,38,0.1) 65%)"></span>
+<span style="position: absolute; top: 14px; right: 14px; background: #FFFFFF; color: #0F1E26; font-size: 11px; font-weight: 800; padding: 6px 12px; border-radius: 999px">بازی بعدی شما</span>
+<span style="position: absolute; right: 16px; left: 16px; bottom: 14px; display: flex; align-items: flex-end; justify-content: space-between; gap: 10px">
+<span style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 22px; font-weight: 900">تنیس · رسی ۱</span>
+<span style="font-size: 13px; color: #E6EEF0">امروز ۱۸:۰۰ تا ۱۹:۳۰</span>
+</span>
+<span style="background: #D9F25E; color: #0F1E26; font-size: 12px; font-weight: 800; padding: 8px 12px; border-radius: 999px">۲ ساعت دیگر</span>
+</span>
+</a>
+
+<div role="tablist" aria-label="انتخاب ورزش" style="margin: 18px 20px 0; display: flex; gap: 6px; padding: 4px; background: #F2F5F6; border-radius: 16px">
+<button type="button" role="tab" onClick="{{setTennis}}" aria-selected="{{isTennis}}" style="{{tabTennis}}">تنیس</button>
+<button type="button" role="tab" onClick="{{setSup}}" aria-selected="{{isSup}}" style="{{tabSup}}">پدل‌بورد</button>
+</div>
+
+<div style="margin: 20px 20px 10px; display: flex; align-items: center; justify-content: space-between">
+<span style="font-size: 17px; font-weight: 900">{{slotTitle}}</span>
+<a href="booking.html" style="font-size: 13px; color: {{brand}}; text-decoration: none; font-weight: 800; padding: 8px 0">همه</a>
+</div>
+<div class="h-scroll" role="group" aria-label="سانس‌های خالی" style="display: flex; gap: 8px; overflow-x: auto; padding: 0 20px">
+<sc-for list="{{slots}}" as="sl" hint-placeholder-count="4">
+<button type="button" class="h-press" onClick="{{sl.pick}}" aria-pressed="{{sl.on}}" style="{{sl.style}}">
+<span style="font-size: 18px; font-weight: 900">{{sl.time}}</span>
+<span style="font-size: 11px; font-weight: 600">{{sl.sub}}</span>
+</button>
+</sc-for>
+</div>
+<a href="booking.html" class="h-press" style="margin: 14px 20px 0; height: 54px; display: flex; align-items: center; justify-content: center; gap: 8px; background: {{brand}}; color: #FFFFFF; text-decoration: none; border-radius: 999px; font-size: 15px; font-weight: 900">{{ctaText}}</a>
+
+<div style="margin: 28px 20px 12px; display: flex; align-items: center; justify-content: space-between">
+<span style="font-size: 17px; font-weight: 900">تجربه‌های پدل‌بورد</span>
+<span style="font-size: 12px; color: #0B6E6B; font-weight: 700; background: #E6F6F5; padding: 5px 10px; border-radius: 999px">روی آب</span>
+</div>
+<div class="h-scroll" style="display: flex; gap: 12px; overflow-x: auto; padding: 0 20px">
+<a href="booking.html" style="flex: 0 0 auto; width: 200px; text-decoration: none; color: #0F1E26">
+<span style="display: block; height: 140px; border-radius: 22px; overflow: hidden; background: #DCEFF2"><img src="../assets/img/sup-sunset-group.webp" alt="تور پدل‌بورد در غروب" style="width: 100%; height: 100%; object-fit: cover; display: block"></span>
+<span style="display: block; padding: 10px 4px 0; font-size: 15px; font-weight: 800">تور غروب</span>
+<span style="display: block; padding: 2px 4px 0; font-size: 12px; color: #66757E">گروهی · با راهنما</span>
+</a>
+<a href="booking.html" style="flex: 0 0 auto; width: 200px; text-decoration: none; color: #0F1E26">
+<span style="display: block; height: 140px; border-radius: 22px; overflow: hidden; background: #DCEFF2"><img src="../assets/img/sup-kid-lesson.webp" alt="کلاس مقدماتی پدل‌بورد" style="width: 100%; height: 100%; object-fit: cover; display: block"></span>
+<span style="display: block; padding: 10px 4px 0; font-size: 15px; font-weight: 800">کلاس مقدماتی</span>
+<span style="display: block; padding: 2px 4px 0; font-size: 12px; color: #66757E">۹۰ دقیقه · با مربی</span>
+</a>
+<a href="booking.html" style="flex: 0 0 auto; width: 200px; text-decoration: none; color: #0F1E26">
+<span style="display: block; height: 140px; border-radius: 22px; overflow: hidden; background: #DCEFF2"><img src="../assets/img/sup-board-closeup.webp" alt="اجاره‌ی برد پدل‌بورد" style="width: 100%; height: 100%; object-fit: cover; display: block"></span>
+<span style="display: block; padding: 10px 4px 0; font-size: 15px; font-weight: 800">اجاره‌ی برد</span>
+<span style="display: block; padding: 2px 4px 0; font-size: 12px; color: #66757E">ساعتی · با جلیقه‌ی نجات</span>
+</a>
+</div>
+
+<div style="margin: 28px 20px 12px; display: flex; align-items: center; justify-content: space-between">
+<span style="font-size: 17px; font-weight: 900">امکانات ما</span>
+</div>
+<div style="padding: 0 20px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<div style="grid-column: span 2; position: relative; height: 170px; border-radius: 22px; overflow: hidden; background: #E6E0D6">
+<img src="../assets/img/fac-cafe.webp" alt="کافه‌ی فضای باز باشگاه" style="width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; right: 10px; bottom: 10px; background: rgba(255,255,255,0.95); border-radius: 14px; padding: 8px 12px; display: flex; flex-direction: column"><span style="font-size: 14px; font-weight: 900">کافه و تراس</span><span style="font-size: 11px; color: #5B6A73">قهوه و اسموتی بعد از بازی</span></span>
+</div>
+<div style="position: relative; height: 150px; border-radius: 22px; overflow: hidden; background: #DCEFF2">
+<img src="../assets/img/fac-beach.webp" alt="ساحل اختصاصی" style="width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; right: 8px; bottom: 8px; background: rgba(255,255,255,0.95); border-radius: 12px; padding: 6px 10px; font-size: 13px; font-weight: 900">ساحل اختصاصی</span>
+</div>
+<div style="position: relative; height: 150px; border-radius: 22px; overflow: hidden; background: #E2E8E6">
+<img src="../assets/img/fac-lockers.webp" alt="رختکن" style="width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; right: 8px; bottom: 8px; background: rgba(255,255,255,0.95); border-radius: 12px; padding: 6px 10px; font-size: 13px; font-weight: 900">رختکن و دوش</span>
+</div>
+<div style="position: relative; height: 150px; border-radius: 22px; overflow: hidden; background: #E9EBDF">
+<img src="../assets/img/fac-yoga.webp" alt="یوگا در فضای باز" style="width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; right: 8px; bottom: 8px; background: rgba(255,255,255,0.95); border-radius: 12px; padding: 6px 10px; font-size: 13px; font-weight: 900">یوگا و ریکاوری</span>
+</div>
+<div style="position: relative; height: 150px; border-radius: 22px; overflow: hidden; background: #E8E2D8">
+<img src="../assets/img/fac-lounge.webp" alt="لانژ اعضا" style="width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; right: 8px; bottom: 8px; background: rgba(255,255,255,0.95); border-radius: 12px; padding: 6px 10px; font-size: 13px; font-weight: 900">لانژ اعضا</span>
+</div>
+<div style="grid-column: span 2; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+<span style="background: #F4F7F7; border-radius: 16px; padding: 12px 4px; display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 11px; font-weight: 700"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{brand}}" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="M9 17V7h4a3 3 0 0 1 0 6H9"></path></svg>پارکینگ</span>
+<span style="background: #F4F7F7; border-radius: 16px; padding: 12px 4px; display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 11px; font-weight: 700"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{brand}}" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"></path><circle cx="12" cy="19.5" r="1"></circle></svg>اینترنت</span>
+<span style="background: #F4F7F7; border-radius: 16px; padding: 12px 4px; display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 11px; font-weight: 700"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{brand}}" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 7h12l-1 13H7z"></path><path d="M9 7a3 3 0 0 1 6 0"></path></svg>فروشگاه</span>
+<span style="background: #F4F7F7; border-radius: 16px; padding: 12px 4px; display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 11px; font-weight: 700"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{brand}}" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 21s-7-4.5-7-11a7 7 0 0 1 14 0c0 6.5-7 11-7 11z"></path><path d="M9 10h6M12 7v6"></path></svg>کمک‌های اولیه</span>
+</div>
+</div>
+
+<div style="margin: 28px 20px 0; border-radius: 26px; background: {{brand}}; color: #FFFFFF; padding: 22px; display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: flex-start; background: #D9F25E; color: #0F1E26; font-size: 11px; font-weight: 800; padding: 5px 10px; border-radius: 999px">عضویت ماهانه</span>
+<span style="font-size: 19px; font-weight: 900; line-height: 1.5">تنیس و پدل‌بورد با یک کارت عضویت</span>
+<span style="font-size: 13px; color: #CDE6EC; line-height: 1.8">اولویت رزرو، ساحل اختصاصی و تخفیف کافه.</span>
+<a href="profile.html" class="h-press" style="align-self: flex-start; margin-top: 4px; background: #FFFFFF; color: {{brand}}; text-decoration: none; font-size: 14px; font-weight: 900; padding: 11px 18px; border-radius: 999px">مشاهده‌ی پلن‌ها</a>
+</div>
+
+<div style="margin: 18px 20px 28px; border-radius: 22px; background: #F7F4EE; padding: 16px 18px; display: flex; align-items: center; gap: 12px">
+<span style="flex: 0 0 auto; width: 42px; height: 42px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; color: {{brand}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 800">[آدرس باشگاه]</span><span style="font-size: 12px; color: #5B6A73">[ساعات کاری]</span></span>
+</div>
+</div>
+
+<nav aria-label="منوی پایین" style="position: absolute; right: 0; left: 0; bottom: 0; height: 76px; background: rgba(255,255,255,0.96); border-top: 1px solid #E8EEF0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr))">
+<a href="home.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: {{brand}}; font-size: 11px; font-weight: 800">
+<span style="width: 52px; height: 30px; border-radius: 999px; background: #E6F1F4; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg></span>خانه</a>
+<a href="booking.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #66757E; font-size: 11px; font-weight: 700">
+<span style="width: 52px; height: 30px; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg></span>رزرو</a>
+<a href="games.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #66757E; font-size: 11px; font-weight: 700">
+<span style="width: 52px; height: 30px; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"></path></svg></span>بازی‌های من</a>
+<a href="profile.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #66757E; font-size: 11px; font-weight: 700">
+<span style="width: 52px; height: 30px; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path></svg></span>پروفایل</a>
+</nav>
+</div>
+</template>
+<div id="dc-root"></div>
+<noscript><p style="padding:24px;font-family:Vazirmatn,sans-serif">برای دیدن این صفحه، جاوااسکریپت مرورگر را فعال کنید.</p></noscript>
+<script type="text/x-dc" data-dc-script data-props='{"brand":{"editor":"color","default":"#0B5D74","options":["#0B5D74","#1E4D8C","#1F5E45"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sport: 'tennis', slot: 0 };
+  }
+  renderVals() {
+    const brand = this.props.brand ?? '#0B5D74';
+    const s = this.state;
+    const isTennis = s.sport === 'tennis';
+    const tab = (on, color) => 'flex: 1; border: 0; border-radius: 12px; height: 42px; font-family: inherit; font-size: 15px; font-weight: 800; cursor: pointer; ' + (on ? 'background: #FFFFFF; color: ' + color + '; box-shadow: 0 6px 16px -8px rgba(15,30,38,0.35);' : 'background: transparent; color: #5B6A73;');
+    const raw = isTennis
+      ? [['۱۸:۰۰', 'رسی ۲'], ['۱۹:۰۰', 'هارد ۱'], ['۲۰:۳۰', 'رسی ۱'], ['۲۲:۰۰', 'هارد ۱']]
+      : [['۰۶:۰۰', 'طلوع'], ['۰۸:۰۰', 'صبح'], ['۱۶:۳۰', 'عصر'], ['۱۸:۰۰', 'غروب']];
+    const onBg = isTennis ? brand : '#0B6E6B';
+    const slots = raw.map(([time, sub], i) => {
+      const on = s.slot === i;
+      return {
+        time, sub, on,
+        style: 'flex: 0 0 auto; width: 92px; height: 70px; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-family: inherit; cursor: pointer; border: 0; ' + (on ? 'background: ' + onBg + '; color: #FFFFFF;' : 'background: #F2F5F6; color: #0F1E26;'),
+        pick: () => this.setState({ slot: i })
+      };
+    });
+    const cur = raw[s.slot] || raw[0];
+    return {
+      brand, isTennis, isSup: !isTennis,
+      tabTennis: tab(isTennis, '#B94A17'), tabSup: tab(!isTennis, '#0B6E6B'),
+      setTennis: () => this.setState({ sport: 'tennis', slot: 0 }),
+      setSup: () => this.setState({ sport: 'sup', slot: 0 }),
+      slotTitle: isTennis ? 'زمین‌های خالی امروز' : 'سانس‌های پدل‌بورد امروز',
+      slots,
+      ctaText: isTennis ? 'رزرو تنیس · ' + cur[1] + ' · ' + cur[0] : 'رزرو پدل‌بورد · ' + cur[1] + ' ' + cur[0]
+    };
+  }
+}
+</script>
+<script src="../assets/js/morphdom.min.js"></script>
+<script src="../assets/js/dc-lite.js"></script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script>
+</body>
+</html>

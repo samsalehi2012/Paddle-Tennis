@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>اپلیکیشن ساحل — نسخه‌ی موبایل</title>
+<meta name="description" content="پیش‌نمایش اپلیکیشن موبایل باشگاه تنیس و پدل‌بورد ساحل">
+<meta name="theme-color" content="#0B5D74">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/icon-192.png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/css/base.css">
+<script>
+  // On a phone, skip the showcase and open the real app screen
+  if (Math.min(window.innerWidth, screen.width) < 760) location.replace('home.html');
+</script>
+<style>
+  :root { --brand: #0B5D74; --ink: #0F1E26; --muted: #5B6A73; --line: #E3E9EC; --teal: #12A4A0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: #F4F7F7; color: var(--ink); font-family: 'Vazirmatn', system-ui, sans-serif; }
+  .wrap { min-height: 100vh; display: grid; grid-template-columns: minmax(300px, 400px) auto; justify-content: center; align-items: center; gap: 72px; padding: 32px; }
+  .side { display: flex; flex-direction: column; gap: 22px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+  .brand b { font-size: 22px; font-weight: 900; display: block; }
+  .brand small { font-size: 12px; color: var(--muted); font-weight: 600; }
+  h1 { margin: 0; font-size: 34px; font-weight: 900; line-height: 1.35; }
+  p { margin: 0; font-size: 15px; line-height: 1.95; color: #44535C; }
+  .screens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .screens button { height: 52px; border-radius: 16px; border: 1px solid var(--line); background: #fff; font-family: inherit; font-size: 15px; font-weight: 800; color: var(--ink); cursor: pointer; transition: background-color .15s ease, color .15s ease, border-color .15s ease; }
+  .screens button:hover { border-color: #B9C6CC; }
+  .screens button[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
+  .qr { display: flex; gap: 16px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 14px; }
+  .qr-box { flex: 0 0 auto; width: 112px; height: 112px; border-radius: 12px; overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center; }
+  .qr-box img { width: 100%; height: 100%; image-rendering: pixelated; }
+  .qr b { font-size: 15px; display: block; margin-bottom: 4px; }
+  .qr span { font-size: 13px; color: var(--muted); line-height: 1.8; }
+  .back { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 20px; border-radius: 999px; background: var(--ink); color: #fff; text-decoration: none; font-size: 14px; font-weight: 800; }
+  .stage { position: relative; }
+  .phone { position: relative; width: 414px; height: 868px; padding: 12px; border-radius: 52px; background: #0F1E26; box-shadow: 0 60px 120px -50px rgba(15, 30, 38, .55), inset 0 0 0 2px #2A3A44; transform-origin: top center; }
+  .phone iframe { display: block; width: 390px; height: 844px; border: 0; border-radius: 40px; background: #fff; }
+  :focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+  @media (max-width: 1000px) { .wrap { grid-template-columns: auto; gap: 32px; } .side { max-width: 414px; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="side" aria-label="معرفی اپلیکیشن">
+    <a class="brand" href="../">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#0B5D74"></circle><path d="M5 23c4-3 7-3 10 0s7 3 10 0 7-3 10 0" stroke="#D9F25E" stroke-width="2.6" stroke-linecap="round"></path><path d="M11 14c3-2.2 6-2.2 9 0s6 2.2 9 0" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"></path></svg>
+      <span><b>ساحل</b><small>باشگاه تنیس و پدل‌بورد</small></span>
+    </a>
+    <h1>اپلیکیشن ساحل<br>روی گوشی شما</h1>
+    <p>این پیش‌نمایش کاملاً قابل کلیک است: صفحه‌ها را عوض کنید، سانس انتخاب کنید و رزرو را تا آخر پیش ببرید. روی گوشی، از منوی مرورگر «افزودن به صفحه‌ی اصلی» را بزنید تا مثل یک اپ نصب شود.</p>
+    <div class="screens" role="group" aria-label="صفحه‌های اپ">
+      <button type="button" data-src="home.html">خانه</button>
+      <button type="button" data-src="booking.html">رزرو</button>
+      <button type="button" data-src="games.html">بازی‌های من</button>
+      <button type="button" data-src="profile.html">پروفایل</button>
+    </div>
+    <div class="qr">
+      <div class="qr-box" id="qr" role="img" aria-label="کد QR برای باز کردن اپ روی گوشی"></div>
+      <div><b>روی گوشی ببینید</b><span>دوربین گوشی را روی این کد بگیرید تا اپ باز شود.</span></div>
+    </div>
+    <a class="back" href="../">→ بازگشت به وب‌سایت</a>
+  </section>
+  <section class="stage" aria-label="پیش‌نمایش گوشی">
+    <div class="phone" id="phone"><iframe id="screen" title="پیش‌نمایش اپلیکیشن ساحل" src="home.html"></iframe></div>
+  </section>
+</main>
+<script src="../assets/js/qrcode.js"></script>
+<script>
+(function () {
+  var frame = document.getElementById('screen');
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.screens button'));
+  function mark(name) {
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-src') === name ? 'true' : 'false'); });
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { frame.src = b.getAttribute('data-src'); mark(b.getAttribute('data-src')); });
+  });
+  frame.addEventListener('load', function () {
+    try { mark(frame.contentWindow.location.pathname.split('/').pop() || 'home.html'); } catch (e) {}
+  });
+  mark('home.html');
+
+  // Scale the phone to fit the window height
+  var phone = document.getElementById('phone');
+  function fit() {
+    var s = Math.min(1, (window.innerHeight - 48) / 868);
+    phone.style.transform = 'scale(' + s + ')';
+    phone.parentElement.style.height = Math.round(868 * s) + 'px';
+    phone.parentElement.style.width = Math.round(414 * s) + 'px';
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // QR code pointing at the app's first screen
+  try {
+    var url = new URL('home.html', location.href).href;
+    var qr = qrcode(0, 'M');
+    qr.addData(url);
+    qr.make();
+    document.getElementById('qr').innerHTML = qr.createImgTag(4, 0, 'QR');
+  } catch (e) {}
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+  }
+})();
+</script>
+</body>
+</html>

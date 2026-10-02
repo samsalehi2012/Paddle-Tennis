@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ساحل — بازی‌های من</title>
+<meta name="description" content="باشگاه تنیس و پدل‌بورد ساحل — رزرو آنلاین زمین تنیس و سانس‌های پدل‌بورد.">
+<meta name="theme-color" content="#0B5D74">
+<meta property="og:title" content="باشگاه ساحل — تنیس و پدل‌بورد">
+<meta property="og:description" content="باشگاه تنیس و پدل‌بورد ساحل — رزرو آنلاین زمین تنیس و سانس‌های پدل‌بورد.">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/icon-192.png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/vazirmatn-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ساحل">
+</head>
+<body class="app-body">
+<template id="dc-template">
+<helmet>
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#0B5D74}a:hover{color:#084A5D}
+.g-scroll{scrollbar-width:none}
+.g-scroll::-webkit-scrollbar{display:none}
+.g-press{transition:transform .12s ease}
+.g-press:active{transform:scale(.97)}
+:focus-visible{outline:3px solid #12A4A0;outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+</helmet>
+<div class="app-root" dir="rtl" style="position: relative; width: 390px; height: 844px; overflow: hidden; background: #FFFFFF; color: #0F1E26; font-family: 'Vazirmatn', system-ui, sans-serif">
+<div class="g-scroll" style="position: absolute; top: 0; right: 0; left: 0; bottom: 76px; overflow-y: auto">
+
+<div style="padding: 22px 20px 0; display: flex; flex-direction: column; gap: 4px">
+<h1 style="margin: 0; font-size: 26px; font-weight: 900">بازی‌های من</h1>
+<span style="font-size: 13px; color: #66757E">رزروهای تنیس و پدل‌بورد شما</span>
+</div>
+
+<div style="margin: 16px 20px 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<div style="background: #F4F7F7; border-radius: 18px; padding: 12px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 11px; color: #66757E; font-weight: 600">این ماه</span><span style="font-size: 20px; font-weight: 900">۶ سانس</span></div>
+<div style="background: #FCEEE6; border-radius: 18px; padding: 12px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 11px; color: #9A3E13; font-weight: 600">تنیس</span><span style="font-size: 20px; font-weight: 900; color: #7A300E">۴</span></div>
+<div style="background: #E6F6F5; border-radius: 18px; padding: 12px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 11px; color: #0B6E6B; font-weight: 600">پدل‌بورد</span><span style="font-size: 20px; font-weight: 900; color: #08504E">۲</span></div>
+</div>
+
+<div role="tablist" aria-label="فیلتر رزروها" style="margin: 16px 20px 0; display: flex; gap: 6px; padding: 4px; background: #F2F5F6; border-radius: 16px">
+<button type="button" role="tab" onClick="{{showUp}}" aria-selected="{{isUp}}" style="{{tabUp}}">پیش‌رو</button>
+<button type="button" role="tab" onClick="{{showPast}}" aria-selected="{{isPast}}" style="{{tabPast}}">گذشته</button>
+</div>
+
+<div style="padding: 16px 20px 24px; display: flex; flex-direction: column; gap: 12px">
+<sc-for list="{{items}}" as="it" hint-placeholder-count="3">
+<article style="border: 1px solid #E8EEF0; border-radius: 24px; overflow: hidden; background: #FFFFFF">
+<div style="display: flex; gap: 12px; padding: 10px">
+<span style="flex: 0 0 auto; width: 92px; height: 92px; border-radius: 18px; overflow: hidden; background: #E6F1F4"><img src="{{it.img}}" alt="{{it.title}}" style="width: 100%; height: 100%; object-fit: cover; display: block"></span>
+<span style="flex: 1; display: flex; flex-direction: column; gap: 4px; padding-top: 2px; min-width: 0">
+<span style="display: flex; align-items: center; justify-content: space-between; gap: 6px"><span style="{{it.tagStyle}}">{{it.sport}}</span><span style="{{it.statusStyle}}">{{it.status}}</span></span>
+<span style="font-size: 16px; font-weight: 900">{{it.title}}</span>
+<span style="font-size: 12px; color: #5B6A73">{{it.when}}</span>
+<span style="font-size: 12px; color: #5B6A73">{{it.extra}}</span>
+</span>
+</div>
+<sc-if value="{{it.showQr}}" hint-placeholder-val="{{ false }}">
+<div style="margin: 0 10px 10px; border-radius: 18px; background: #F4F7F7; padding: 14px; display: flex; align-items: center; gap: 14px">
+<div role="img" aria-label="کد ورود" style="flex: 0 0 auto; width: 84px; height: 84px; background: #FFFFFF; border-radius: 10px; padding: 5px; box-sizing: border-box; display: grid; grid-template-columns: repeat(11, minmax(0, 1fr))">
+<sc-for list="{{it.qr}}" as="q" hint-placeholder-count="121"><span style="{{q.s}}"></span></sc-for>
+</div>
+<span style="font-size: 12px; color: #44535C; line-height: 1.8">این کد را در پذیرش نشان دهید. بدون اینترنت هم کار می‌کند.</span>
+</div>
+</sc-if>
+<sc-if value="{{it.pastActions}}" hint-placeholder-val="{{ false }}">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid #EEF2F3">
+<a href="booking.html" class="g-press" style="height: 48px; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 13px; font-weight: 800; color: {{it.primaryColor}}">رزرو دوباره</a>
+<button type="button" class="g-press" onClick="{{it.secondary}}" style="height: 48px; border: 0; border-right: 1px solid #EEF2F3; background: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 800; color: #44535C; cursor: pointer">{{it.secondaryLabel}}</button>
+</div>
+</sc-if>
+<sc-if value="{{it.hasActions}}" hint-placeholder-val="{{ true }}">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid #EEF2F3">
+<button type="button" class="g-press" onClick="{{it.primary}}" style="height: 48px; border: 0; background: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 800; color: {{it.primaryColor}}; cursor: pointer">{{it.primaryLabel}}</button>
+<button type="button" class="g-press" onClick="{{it.secondary}}" style="height: 48px; border: 0; border-right: 1px solid #EEF2F3; background: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 800; color: {{it.secondaryColor}}; cursor: pointer">{{it.secondaryLabel}}</button>
+</div>
+</sc-if>
+</article>
+</sc-for>
+<sc-if value="{{isPast}}" hint-placeholder-val="{{ false }}">
+<a href="booking.html" class="g-press" style="height: 52px; display: flex; align-items: center; justify-content: center; border-radius: 999px; background: {{brand}}; color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 900">رزرو دوباره</a>
+</sc-if>
+<sc-if value="{{isUp}}" hint-placeholder-val="{{ true }}">
+<a href="booking.html" class="g-press" style="height: 52px; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 999px; border: 1.5px dashed #B9C6CC; color: #0F1E26; text-decoration: none; font-size: 15px; font-weight: 800">+ رزرو جدید</a>
+</sc-if>
+</div>
+</div>
+
+<nav aria-label="منوی پایین" style="position: absolute; right: 0; left: 0; bottom: 0; height: 76px; background: rgba(255,255,255,0.96); border-top: 1px solid #E8EEF0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr))">
+<a href="home.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #66757E; font-size: 11px; font-weight: 700">
+<span style="width: 52px; height: 30px; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg></span>خانه</a>
+<a href="booking.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #66757E; font-size: 11px; font-weight: 700">
+<span style="width: 52px; height: 30px; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg></span>رزرو</a>
+<a href="games.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: {{brand}}; font-size: 11px; font-weight: 800">
+<span style="width: 52px; height: 30px; border-radius: 999px; background: #E6F1F4; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"></path></svg></span>بازی‌های من</a>
+<a href="profile.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #66757E; font-size: 11px; font-weight: 700">
+<span style="width: 52px; height: 30px; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path></svg></span>پروفایل</a>
+</nav>
+</div>
+</template>
+<div id="dc-root"></div>
+<noscript><p style="padding:24px;font-family:Vazirmatn,sans-serif">برای دیدن این صفحه، جاوااسکریپت مرورگر را فعال کنید.</p></noscript>
+<script type="text/x-dc" data-dc-script data-props='{"brand":{"editor":"color","default":"#0B5D74","options":["#0B5D74","#1E4D8C","#1F5E45"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tab: 'up', open: 0, cancelled: {}, rated: {} };
+  }
+  renderVals() {
+    const brand = this.props.brand ?? '#0B5D74';
+    const s = this.state;
+    const isUp = s.tab === 'up';
+    const tab = (on) => 'flex: 1; border: 0; border-radius: 12px; height: 42px; font-family: inherit; font-size: 15px; font-weight: 800; cursor: pointer; ' + (on ? 'background: #FFFFFF; color: #0F1E26; box-shadow: 0 6px 16px -8px rgba(15,30,38,0.35);' : 'background: transparent; color: #5B6A73;');
+    const tagT = 'background: #FCEEE6; color: #9A3E13; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 999px;';
+    const tagS = 'background: #E6F6F5; color: #0B6E6B; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 999px;';
+    const qrFor = (k) => {
+      let seed = 97 + k * 131; const out = [];
+      for (let y = 0; y < 11; y++) for (let x = 0; x < 11; x++) {
+        const f = (fx, fy) => x >= fx && x < fx + 3 && y >= fy && y < fy + 3;
+        let d; if (f(0, 0) || f(8, 0) || f(0, 8)) d = true; else { seed = (seed * 1103515245 + 12345) % 2147483648; d = (seed >> 7) % 2 === 1; }
+        out.push({ s: 'display: block; background: ' + (d ? '#0F1E26' : 'transparent') + ';' });
+      }
+      return out;
+    };
+    const up = [
+      { id: 0, sport: 'تنیس', t: true, title: 'زمین رسی ۱', when: 'امروز، ۱۰ مهر · ۱۸:۰۰ تا ۱۹:۳۰', extra: 'دونفره · اجاره‌ی راکت', img: '../assets/img/ten-clay-aerial.webp' },
+      { id: 1, sport: 'پدل‌بورد', t: false, title: 'تور غروب', when: 'یکشنبه ۱۲ مهر · ۱۸:۰۰', extra: '۲ برد · جلیقه‌ی نجات شامل', img: '../assets/img/sup-sunset-group.webp' },
+      { id: 2, sport: 'پدل‌بورد', t: false, title: 'کلاس مقدماتی', when: 'سه‌شنبه ۱۴ مهر · ۰۸:۰۰', extra: 'با مربی · ۹۰ دقیقه', img: '../assets/img/sup-kid-lesson.webp' }
+    ];
+    const past = [
+      { id: 10, sport: 'تنیس', t: true, title: 'زمین هارد ۱', when: 'شنبه ۴ مهر · ۲۰:۰۰', extra: '۶۰ دقیقه', img: '../assets/img/ten-racket-blue.webp' },
+      { id: 11, sport: 'پدل‌بورد', t: false, title: 'اجاره‌ی برد', when: 'جمعه ۳ مهر · ۰۶:۰۰', extra: '۱ برد · طلوع', img: '../assets/img/sup-board-closeup.webp' },
+      { id: 12, sport: 'تنیس', t: true, title: 'کلاس با مربی', when: 'دوشنبه ۳۰ شهریور · ۱۷:۰۰', extra: 'جلسه‌ی خصوصی', img: '../assets/img/ten-coach.webp' }
+    ];
+    const items = (isUp ? up : past).map((it) => {
+      const cancelled = !!s.cancelled[it.id];
+      const status = isUp ? (cancelled ? 'لغو شد' : 'تأیید شده') : 'انجام شد';
+      const statusStyle = 'font-size: 11px; font-weight: 800; ' + (cancelled ? 'color: #B42318;' : isUp ? 'color: #0B6E6B;' : 'color: #66757E;');
+      const open = isUp && s.open === it.id && !cancelled;
+      return {
+        img: it.img, title: it.title, when: it.when, extra: it.extra, sport: it.sport,
+        tagStyle: it.t ? tagT : tagS, status, statusStyle,
+        showQr: open, qr: qrFor(it.id),
+        hasActions: isUp && !cancelled, pastActions: !isUp, primaryColor: brand,
+        primaryLabel: open ? 'بستن کارت ورود' : 'کارت ورود',
+        primary: () => this.setState({ open: open ? -1 : it.id }),
+        secondaryLabel: isUp ? 'لغو رزرو' : (s.rated[it.id] ? 'امتیاز ثبت شد ✓' : 'امتیاز به بازی'),
+        secondaryColor: isUp ? '#B42318' : '#44535C',
+        secondary: () => {
+          if (isUp) this.setState({ cancelled: Object.assign({}, s.cancelled, { [it.id]: true }) });
+          else this.setState({ rated: Object.assign({}, s.rated, { [it.id]: true }) });
+        }
+      };
+    });
+    return {
+      brand, isUp, isPast: !isUp,
+      tabUp: tab(isUp), tabPast: tab(!isUp),
+      showUp: () => this.setState({ tab: 'up' }), showPast: () => this.setState({ tab: 'past' }),
+      items
+    };
+  }
+}
+</script>
+<script src="../assets/js/morphdom.min.js"></script>
+<script src="../assets/js/dc-lite.js"></script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script>
+</body>
+</html>

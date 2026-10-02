@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ساحل — رزرو</title>
+<meta name="description" content="باشگاه تنیس و پدل‌بورد ساحل — رزرو آنلاین زمین تنیس و سانس‌های پدل‌بورد.">
+<meta name="theme-color" content="#0B5D74">
+<meta property="og:title" content="باشگاه ساحل — تنیس و پدل‌بورد">
+<meta property="og:description" content="باشگاه تنیس و پدل‌بورد ساحل — رزرو آنلاین زمین تنیس و سانس‌های پدل‌بورد.">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/icons/icon-192.png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/vazirmatn-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ساحل">
+</head>
+<body class="app-body">
+<template id="dc-template">
+<helmet>
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#0B5D74}a:hover{color:#084A5D}
+.b-scroll{scrollbar-width:none}
+.b-scroll::-webkit-scrollbar{display:none}
+.b-press{transition:transform .12s ease}
+.b-press:active{transform:scale(.97)}
+.b-in{animation:b-in .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes b-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+:focus-visible{outline:3px solid #12A4A0;outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important}}
+</style>
+</helmet>
+<div class="app-root" dir="rtl" style="position: relative; width: 390px; height: 844px; overflow: hidden; background: #FFFFFF; color: #0F1E26; font-family: 'Vazirmatn', system-ui, sans-serif">
+
+<sc-if value="{{isSelect}}" hint-placeholder-val="{{ true }}">
+<div class="b-scroll" style="position: absolute; top: 0; right: 0; left: 0; bottom: 136px; overflow-y: auto">
+<div style="position: relative; height: 170px; overflow: hidden; border-radius: 0 0 30px 30px; background: #DCEFF2">
+<img src="{{heroImg}}" alt="{{heroAlt}}" style="width: 100%; height: 100%; object-fit: cover; display: block">
+<span aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,30,38,0.7), rgba(10,30,38,0) 60%)"></span>
+<a href="home.html" aria-label="بازگشت" style="position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; color: #0F1E26">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+<h1 style="position: absolute; right: 20px; bottom: 14px; margin: 0; font-size: 26px; font-weight: 900; color: #FFFFFF">{{title}}</h1>
+</div>
+
+<div style="padding: 16px 20px 20px; display: flex; flex-direction: column; gap: 18px">
+<div role="tablist" aria-label="انتخاب ورزش" style="display: flex; gap: 6px; padding: 4px; background: #F2F5F6; border-radius: 16px">
+<button type="button" role="tab" onClick="{{setTennis}}" aria-selected="{{isTennis}}" style="{{tabTennis}}">تنیس</button>
+<button type="button" role="tab" onClick="{{setSup}}" aria-selected="{{isSup}}" style="{{tabSup}}">پدل‌بورد</button>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 14px; font-weight: 800">تاریخ</span>
+<div class="b-scroll" role="group" aria-label="انتخاب روز" style="display: flex; gap: 6px; overflow-x: auto">
+<sc-for list="{{days}}" as="d" hint-placeholder-count="7">
+<button type="button" class="b-press" onClick="{{d.pick}}" aria-pressed="{{d.on}}" style="{{d.style}}">
+<span style="font-size: 11px; font-weight: 600">{{d.name}}</span>
+<span style="font-size: 19px; font-weight: 900">{{d.num}}</span>
+</button>
+</sc-for>
+</div>
+</div>
+
+<sc-if value="{{isTennis}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 14px; font-weight: 800">زمین</span>
+<div role="radiogroup" aria-label="انتخاب زمین" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{courts}}" as="c" hint-placeholder-count="3">
+<button type="button" role="radio" aria-checked="{{c.on}}" class="b-press" onClick="{{c.pick}}" style="{{c.style}}">
+<span style="font-size: 15px; font-weight: 900">{{c.name}}</span>
+<span style="font-size: 11px; font-weight: 600">{{c.meta}}</span>
+</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="display: flex; justify-content: space-between; align-items: center"><span style="font-size: 14px; font-weight: 800">ساعت شروع</span><span style="font-size: 11px; color: #66757E">خاکستری = پر</span></span>
+<div role="group" aria-label="انتخاب ساعت" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{slots}}" as="t" hint-placeholder-count="8">
+<button type="button" class="b-press" onClick="{{t.pick}}" disabled="{{t.booked}}" aria-pressed="{{t.on}}" aria-label="{{t.aria}}" style="{{t.style}}">{{t.label}}</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 14px; font-weight: 800">مدت بازی</span>
+<div role="group" aria-label="مدت بازی" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{durs}}" as="u" hint-placeholder-count="3">
+<button type="button" class="b-press" onClick="{{u.pick}}" aria-pressed="{{u.on}}" style="{{u.style}}">{{u.label}}</button>
+</sc-for>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isSup}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 14px; font-weight: 800">تجربه</span>
+<div role="radiogroup" aria-label="نوع تجربه" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{exps}}" as="e" hint-placeholder-count="4">
+<button type="button" role="radio" aria-checked="{{e.on}}" class="b-press" onClick="{{e.pick}}" style="{{e.style}}">
+<span style="display: block; height: 78px; border-radius: 14px; overflow: hidden; background: #DCEFF2"><img src="{{e.img}}" alt="{{e.title}}" style="width: 100%; height: 100%; object-fit: cover; display: block"></span>
+<span style="display: block; padding: 8px 4px 2px; font-size: 14px; font-weight: 900; text-align: right">{{e.title}}</span>
+<span style="display: block; padding: 0 4px 4px; font-size: 11px; font-weight: 600; text-align: right; color: #5B6A73">{{e.meta}}</span>
+</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 14px; font-weight: 800">سانس</span>
+<div role="group" aria-label="سانس پدل‌بورد" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{supSlots}}" as="sl" hint-placeholder-count="4">
+<button type="button" class="b-press" onClick="{{sl.pick}}" disabled="{{sl.full}}" aria-pressed="{{sl.on}}" style="{{sl.style}}">
+<span style="display: flex; align-items: center; justify-content: space-between; width: 100%"><span style="font-size: 13px; font-weight: 800">{{sl.name}}</span><span style="font-size: 10px; font-weight: 800">{{sl.cap}}</span></span>
+<span style="font-size: 20px; font-weight: 900">{{sl.time}}</span>
+</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; background: #F4F7F7; border-radius: 18px; padding: 10px 12px 10px 10px">
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 800">تعداد برد</span><span style="font-size: 11px; color: #5B6A73">جلیقه‌ی نجات برای هر نفر شامل است</span></span>
+<span style="display: flex; align-items: center; gap: 10px">
+<button type="button" aria-label="کم کردن" onClick="{{dec}}" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid #D5DEE2; background: #FFFFFF; font-family: inherit; font-size: 20px; font-weight: 800; color: #0F1E26; cursor: pointer">−</button>
+<span style="min-width: 22px; text-align: center; font-size: 18px; font-weight: 900">{{boardsFa}}</span>
+<button type="button" aria-label="اضافه کردن" onClick="{{inc}}" style="width: 40px; height: 40px; border-radius: 50%; border: 0; background: #0B6E6B; font-family: inherit; font-size: 20px; font-weight: 800; color: #FFFFFF; cursor: pointer">+</button>
+</span>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+
+<div style="position: absolute; right: 0; left: 0; bottom: 0; background: #FFFFFF; border-top: 1px solid #E8EEF0; box-shadow: 0 -12px 30px -18px rgba(15,30,38,0.25); padding: 14px 20px 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+<span style="font-size: 13px; color: #44535C; font-weight: 600; line-height: 1.6">{{summary}}</span>
+<span style="font-size: 15px; font-weight: 900; white-space: nowrap">[قیمت] تومان</span>
+</div>
+<button type="button" class="b-press" onClick="{{confirm}}" disabled="{{noSlot}}" style="{{payBtn}}">{{payLabel}}</button>
+</div>
+</sc-if>
+
+<sc-if value="{{isDone}}" hint-placeholder-val="{{ false }}">
+<div class="b-in b-scroll" style="position: absolute; inset: 0; overflow-y: auto; padding: 28px 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; padding-top: 6px">
+<span style="width: 72px; height: 72px; border-radius: 50%; background: #E6F6F5; color: #0B6E6B; display: flex; align-items: center; justify-content: center">
+<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M4 12l5 5L20 6"></path></svg></span>
+<span style="font-size: 24px; font-weight: 900">رزرو شما ثبت شد!</span>
+<span style="font-size: 13px; color: #5B6A73">کد پیگیری: [کد پیگیری]</span>
+</div>
+<div style="border-radius: 26px; border: 1px solid #E3E9EC; overflow: hidden; box-shadow: 0 30px 60px -36px rgba(15,30,38,0.4)">
+<div style="position: relative; height: 130px"><img src="{{heroImg}}" alt="{{heroAlt}}" style="width: 100%; height: 100%; object-fit: cover; display: block"><span style="position: absolute; top: 12px; right: 12px; background: #FFFFFF; font-size: 12px; font-weight: 800; padding: 6px 12px; border-radius: 999px">{{ticketTag}}</span></div>
+<div style="padding: 16px 18px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 20px; font-weight: 900">{{ticketTitle}}</span>
+<span style="font-size: 13px; color: #5B6A73">{{ticketSub}}</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid #EEF2F3">
+<div style="padding: 12px 16px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 11px; color: #66757E">تاریخ</span><span style="font-size: 14px; font-weight: 800">{{dateText}}</span></div>
+<div style="padding: 12px 16px; display: flex; flex-direction: column; gap: 2px; border-right: 1px solid #EEF2F3"><span style="font-size: 11px; color: #66757E">ساعت</span><span style="font-size: 14px; font-weight: 800">{{timeText}}</span></div>
+<div style="padding: 12px 16px; display: flex; flex-direction: column; gap: 2px; border-right: 1px solid #EEF2F3"><span style="font-size: 11px; color: #66757E">{{extraLabel}}</span><span style="font-size: 14px; font-weight: 800">{{extraText}}</span></div>
+</div>
+<div style="border-top: 1px dashed #D5DEE2; padding: 16px 18px; display: flex; align-items: center; gap: 16px">
+<div role="img" aria-label="کد ورود" style="flex: 0 0 auto; width: 96px; height: 96px; padding: 6px; box-sizing: border-box; border-radius: 12px; border: 1px solid #E3E9EC; display: grid; grid-template-columns: repeat(11, minmax(0, 1fr))">
+<sc-for list="{{qr}}" as="q" hint-placeholder-count="121">
+<span style="{{q.style}}"></span>
+</sc-for>
+</div>
+<span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 15px; font-weight: 900">کارت ورود</span><span style="font-size: 12px; color: #5B6A73; line-height: 1.8">در پذیرش نشان دهید. بدون اینترنت هم کار می‌کند.</span></span>
+</div>
+</div>
+<a href="games.html" class="b-press" style="height: 54px; display: flex; align-items: center; justify-content: center; background: {{brand}}; color: #FFFFFF; text-decoration: none; border-radius: 999px; font-size: 15px; font-weight: 900">مشاهده در بازی‌های من</a>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<button type="button" class="b-press" style="height: 50px; border-radius: 999px; border: 1px solid #D5DEE2; background: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 800; color: #0F1E26; cursor: pointer">افزودن به تقویم</button>
+<button type="button" class="b-press" onClick="{{reset}}" style="height: 50px; border-radius: 999px; border: 1px solid #D5DEE2; background: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 800; color: #0F1E26; cursor: pointer">رزرو دیگر</button>
+</div>
+</div>
+</sc-if>
+</div>
+</template>
+<div id="dc-root"></div>
+<noscript><p style="padding:24px;font-family:Vazirmatn,sans-serif">برای دیدن این صفحه، جاوااسکریپت مرورگر را فعال کنید.</p></noscript>
+<script type="text/x-dc" data-dc-script data-props='{"brand":{"editor":"color","default":"#0B5D74","options":["#0B5D74","#1E4D8C","#1F5E45"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sport: 'tennis', day: 0, court: 0, slot: 2, dur: 1, exp: 2, supSlot: 2, boards: 2, done: false };
+  }
+  renderVals() {
+    const brand = this.props.brand ?? '#0B5D74';
+    const fa = (n) => String(n).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    const s = this.state;
+    const isTennis = s.sport === 'tennis';
+    const accent = isTennis ? brand : '#0B6E6B';
+    const onS = 'background: ' + accent + '; color: #FFFFFF; border: 0;';
+    const offS = 'background: #F2F5F6; color: #0F1E26; border: 0;';
+    const tab = (on, color) => 'flex: 1; border: 0; border-radius: 12px; height: 42px; font-family: inherit; font-size: 15px; font-weight: 800; cursor: pointer; ' + (on ? 'background: #FFFFFF; color: ' + color + '; box-shadow: 0 6px 16px -8px rgba(15,30,38,0.35);' : 'background: transparent; color: #5B6A73;');
+    const dayNames = ['امروز', 'شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه'];
+    const days = dayNames.map((name, i) => ({
+      name, num: fa(10 + i), on: s.day === i,
+      style: 'flex: 0 0 auto; width: 58px; height: 64px; border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: inherit; cursor: pointer; ' + (s.day === i ? onS : offS),
+      pick: () => this.setState({ day: i })
+    }));
+    const courtList = [{ name: 'رسی ۱', meta: 'زمین رسی' }, { name: 'رسی ۲', meta: 'زمین رسی' }, { name: 'هارد ۱', meta: 'زمین هارد' }];
+    const courts = courtList.map((c, i) => ({
+      name: c.name, meta: c.meta, on: s.court === i,
+      style: 'height: 60px; border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: inherit; cursor: pointer; ' + (s.court === i ? onS : offS),
+      pick: () => this.setState({ court: i })
+    }));
+    const hourNums = [16, 17, 18, 19, 20, 21, 22, 23];
+    const slots = hourNums.map((h, i) => {
+      const booked = ((s.court * 3 + i * 5 + s.day * 2) % 7) < 3;
+      const on = s.slot === i && !booked;
+      return {
+        booked, on, label: fa(h) + ':۰۰',
+        aria: 'ساعت ' + fa(h) + (booked ? ' پر' : ' آزاد'),
+        style: 'height: 46px; border-radius: 14px; font-family: inherit; font-size: 14px; font-weight: 800; ' + (booked ? 'background: #F7F8F9; color: #B4BEC3; border: 0; cursor: not-allowed; text-decoration: line-through;' : (on ? onS : 'background: #E6F1F4; color: #0B4F63; border: 0;') + ' cursor: pointer;'),
+        pick: () => this.setState({ slot: i })
+      };
+    });
+    const durLabels = ['۶۰ دقیقه', '۹۰ دقیقه', '۱۲۰ دقیقه'];
+    const durs = durLabels.map((label, i) => ({ label, on: s.dur === i, style: 'height: 46px; border-radius: 14px; font-family: inherit; font-size: 13px; font-weight: 800; cursor: pointer; ' + (s.dur === i ? onS : offS), pick: () => this.setState({ dur: i }) }));
+    const expData = [
+      { title: 'اجاره‌ی برد', meta: 'ساعتی', img: '../assets/img/sup-board-closeup.webp' },
+      { title: 'کلاس مقدماتی', meta: 'با مربی · ۹۰ دقیقه', img: '../assets/img/sup-kid-lesson.webp' },
+      { title: 'تور غروب', meta: 'گروهی · با راهنما', img: '../assets/img/sup-sunset-group.webp' },
+      { title: 'گروهی و خانوادگی', meta: 'برنامه‌ی اختصاصی', img: '../assets/img/sup-group-aerial.webp' }
+    ];
+    const exps = expData.map((e, i) => ({
+      title: e.title, meta: e.meta, img: e.img, on: s.exp === i,
+      style: 'padding: 6px; border-radius: 20px; font-family: inherit; cursor: pointer; display: block; ' + (s.exp === i ? 'background: #E6F6F5; border: 2px solid #12A4A0;' : 'background: #FFFFFF; border: 2px solid #EEF2F3;'),
+      pick: () => this.setState({ exp: i })
+    }));
+    const slotData = [{ name: 'طلوع', time: '۰۶:۰۰' }, { name: 'صبح', time: '۰۸:۰۰' }, { name: 'عصر', time: '۱۶:۳۰' }, { name: 'غروب', time: '۱۸:۰۰' }];
+    const supSlots = slotData.map((d, i) => {
+      const left = (i * 3 + s.day * 2 + s.exp + 1) % 6;
+      const full = left === 0;
+      const on = s.supSlot === i && !full;
+      return {
+        name: d.name, time: d.time, full, on,
+        cap: full ? 'تکمیل' : fa(left) + ' برد خالی',
+        style: 'height: 72px; border-radius: 18px; padding: 10px 14px; font-family: inherit; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 2px; ' + (full ? 'background: #F7F8F9; color: #B4BEC3; border: 0; cursor: not-allowed;' : (on ? onS : 'background: #E6F6F5; color: #0B4F4D; border: 0;') + ' cursor: pointer;'),
+        pick: () => this.setState({ supSlot: i })
+      };
+    });
+    const dateText = s.day === 0 ? 'امروز' : dayNames[s.day] + ' ' + fa(10 + s.day);
+    let ok, summary, timeText, ticketTitle, ticketSub, extraLabel, extraText;
+    if (isTennis) {
+      ok = s.slot >= 0 && slots[s.slot] && !slots[s.slot].booked;
+      timeText = ok ? slots[s.slot].label : '—';
+      summary = ok ? 'تنیس · ' + courtList[s.court].name + ' · ' + dateText + ' · ' + timeText + ' · ' + durLabels[s.dur] : 'یک ساعت آزاد انتخاب کنید';
+      ticketTitle = 'تنیس · زمین ' + courtList[s.court].name;
+      ticketSub = courtList[s.court].meta + ' · ' + durLabels[s.dur];
+      extraLabel = 'مدت'; extraText = durLabels[s.dur];
+    } else {
+      ok = s.supSlot >= 0 && supSlots[s.supSlot] && !supSlots[s.supSlot].full;
+      timeText = ok ? slotData[s.supSlot].time : '—';
+      summary = ok ? 'پدل‌بورد · ' + expData[s.exp].title + ' · ' + dateText + ' · ' + slotData[s.supSlot].name + ' ' + timeText + ' · ' + fa(s.boards) + ' برد' : 'یک سانس آزاد انتخاب کنید';
+      ticketTitle = 'پدل‌بورد · ' + expData[s.exp].title;
+      ticketSub = (ok ? slotData[s.supSlot].name : '') + ' · جلیقه‌ی نجات شامل';
+      extraLabel = 'برد'; extraText = fa(s.boards) + ' عدد';
+    }
+    let seed = s.court * 31 + s.day * 17 + (s.slot + 2) * 7 + s.exp * 5 + (isTennis ? 3 : 11);
+    const qr = [];
+    for (let y = 0; y < 11; y++) {
+      for (let x = 0; x < 11; x++) {
+        const finder = (fx, fy) => x >= fx && x < fx + 3 && y >= fy && y < fy + 3;
+        let dark;
+        if (finder(0, 0) || finder(8, 0) || finder(0, 8)) dark = true;
+        else { seed = (seed * 1103515245 + 12345) % 2147483648; dark = (seed >> 7) % 2 === 1; }
+        qr.push({ style: 'display: block; border-radius: 1px; background: ' + (dark ? '#0F1E26' : 'transparent') + ';' });
+      }
+    }
+    return {
+      brand, isTennis, isSup: !isTennis,
+      isSelect: !s.done, isDone: s.done,
+      title: isTennis ? 'رزرو زمین تنیس' : 'رزرو پدل‌بورد',
+      heroImg: isTennis ? '../assets/img/ten-clay-aerial.webp' : '../assets/img/sup-aerial-solo.webp',
+      heroAlt: isTennis ? 'زمین تنیس رسی از نمای بالا' : 'پدل‌بورد روی آب فیروزه‌ای',
+      tabTennis: tab(isTennis, '#B94A17'), tabSup: tab(!isTennis, '#0B6E6B'),
+      setTennis: () => this.setState({ sport: 'tennis' }), setSup: () => this.setState({ sport: 'sup' }),
+      days, courts, slots, durs, exps, supSlots,
+      boardsFa: fa(s.boards),
+      inc: () => this.setState({ boards: Math.min(8, s.boards + 1) }),
+      dec: () => this.setState({ boards: Math.max(1, s.boards - 1) }),
+      summary, noSlot: !ok,
+      payLabel: ok ? 'پرداخت و تأیید رزرو' : 'ابتدا سانس را انتخاب کنید',
+      payBtn: 'height: 54px; width: 100%; border: 0; border-radius: 999px; font-family: inherit; font-size: 16px; font-weight: 900; ' + (ok ? 'background: ' + accent + '; color: #FFFFFF; cursor: pointer;' : 'background: #E3E9EC; color: #7E8A90; cursor: not-allowed;'),
+      confirm: () => { if (ok) this.setState({ done: true }); },
+      reset: () => this.setState({ done: false }),
+      ticketTag: isTennis ? 'تنیس' : 'پدل‌بورد',
+      ticketTitle, ticketSub, dateText, timeText, extraLabel, extraText, qr
+    };
+  }
+}
+</script>
+<script src="../assets/js/morphdom.min.js"></script>
+<script src="../assets/js/dc-lite.js"></script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script>
+</body>
+</html>

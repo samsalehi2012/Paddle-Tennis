@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('../fonts/vazirmatn-var.woff2') format('woff2-variations'),
+       url('../fonts/vazirmatn-var.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; }
+img { max-width: 100%; }
+
+/* Website hero on phones: paddle-board photo full width, tennis photos below */
+@media (max-width: 600px) {
+  .s-hero-media { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; grid-template-rows: 300px 190px !important; height: auto !important; }
+  .s-hero-media > :first-child { grid-column: span 2 !important; grid-row: span 1 !important; }
+}
+
+/* App screens opened directly on a desktop browser: center the phone */
+body.app-body { background: #EEF3F4; }
+@media (min-width: 561px) {
+  body.app-body { display: flex; justify-content: center; align-items: flex-start; padding: 24px 0; min-height: 100vh; box-sizing: border-box; }
+  body.app-body .app-root { border-radius: 36px; box-shadow: 0 40px 90px -40px rgba(15, 30, 38, 0.45); }
+}
+
+/* On a real phone (or inside the 390px viewer frame) the app fills the screen */
+@media (max-width: 560px) {
+  body.app-body { background: #FFFFFF; }
+  .app-root { width: 100% !important; height: 100vh !important; height: 100dvh !important; }
+  .app-root nav[aria-label="منوی پایین"] { padding-bottom: env(safe-area-inset-bottom); }
+}

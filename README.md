@@ -1,0 +1,33 @@
+# باشگاه ساحل — تنیس و پدل‌بورد
+
+پروتوتایپ کامل وب‌سایت و اپلیکیشن موبایل (PWA) برای رزرو آنلاین تنیس و پدل‌بورد.
+
+- `index.html` — وب‌سایت اصلی (واکنش‌گرا؛ روی دسکتاپ و موبایل)
+- `app/` — اپلیکیشن موبایل: خانه، رزرو، بازی‌های من، پروفایل
+  - روی دسکتاپ، `app/` یک قاب گوشی با QR نشان می‌دهد
+  - روی گوشی، مستقیم اپ باز می‌شود و با «افزودن به صفحه‌ی اصلی» نصب می‌شود
+
+همه‌چیز استاتیک است: بدون سرور، بدون نصب، بدون نیاز به build. عکس‌ها و فونت وزیرمتن داخل خود پروژه هستند.
+
+## انتشار روی GitHub Pages
+
+1. در GitHub یک ریپازیتوری **Public** جدید بسازید (مثلاً `sahel-club`).
+2. روی **uploading an existing file** بزنید و **همه‌ی محتوای این پوشه** را (نه خود پوشه را) بکشید و رها کنید، سپس **Commit changes**.
+3. به **Settings → Pages** بروید. در **Build and deployment**، گزینه‌ی **Deploy from a branch** را انتخاب کنید، شاخه‌ی `main` و پوشه‌ی `/ (root)` را بزنید و **Save** کنید.
+4. بعد از یکی دو دقیقه سایت روی این آدرس بالا می‌آید:
+   `https://<نام-کاربری>.github.io/sahel-club/`
+   - اپ موبایل: `https://<نام-کاربری>.github.io/sahel-club/app/`
+
+## اجرای محلی (اختیاری)
+
+برای دیدن روی کامپیوتر، داخل همین پوشه یک سرور ساده اجرا کنید (باز کردن مستقیم فایل هم کار می‌کند، اما سرویس‌ورکر PWA فقط روی http/https فعال می‌شود):
+
+```
+python -m http.server 8000
+```
+
+## اعتبار
+
+- عکس‌ها: [Unsplash](https://unsplash.com) (مجوز Unsplash؛ استفاده‌ی تجاری آزاد)
+- فونت: [Vazirmatn](https://github.com/rastikerdar/vazirmatn) (SIL Open Font License)
+- کتابخانه‌ها: [morphdom](https://github.com/patrick-steele-idem/morphdom) (MIT)، [qrcode-generator](https://github.com/kazuhikoarase/qrcode-generator) (MIT)
